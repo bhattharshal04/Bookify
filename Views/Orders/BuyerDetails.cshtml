@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BookifyNew.ViewModel.MyItemsViewModel>
+@{
+    ViewData["Title"] = "SellerDetails";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+
+@if (Model.Count() > 0)
+{
+    @foreach (var item in Model)
+    {
+        <article class="card card-product-list">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <a href="#" class="title mt-2 h5">@(item.appUser.FirstName + " " + item.appUser.LastName)</a>
+                        <div class="d-flex mb-3">
+                            <div class="price-wrap mr-4">
+                                <span class="price h6">@("Street: "+item.appUser.Address)</span>
+                                <br />
+                                <span class="price h6">@("City: "+item.appUser.City)</span>
+                                <br />
+                                <span class="price h6">@("Postal Code: "+item.appUser.PostalCode)</span>
+                                <br />
+                                <span class="price h6">@("Phone Number: "+item.appUser.PhoneNumber)</span>
+                            </div> <!-- price-dewrap // -->
+                        </div>
+                        <ul class="list-bullet">
+                            <li>@("Order Date " + item.order.OrderDate.ToString("dddd, dd MMMM yyyy"))</li>
+                            @if (item.order.RentId == null)
+                            {
+                                <li>Buyout Option: Buy</li>
+                            }
+                            else
+                            {
+                                <li>Buyout Option: Rent</li>
+                                <li>@("Rent Date Start " + Convert.ToDateTime(item.order.RentStartDate).ToString("dddd, dd MMMM yyyy"))</li>
+                                <li>@("Rent Date End " + Convert.ToDateTime(item.order.RentEndDate).ToString("dddd, dd MMMM yyyy"))</li>
+                            }
+                        </ul>
+                    </div> <!-- col.// -->
+                </div> <!-- row.// -->
+            </div> <!-- card-body .// -->
+        </article>
+    }
+}
+else
+{
+    <h3>No buyer found</h3>
+}

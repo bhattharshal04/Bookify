@@ -1,0 +1,67 @@
+﻿@model BookifyNew.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title mb-4">Add Product</h4>
+        @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-row">
+                <div class="col form-group">
+                    <label>Product Name</label>
+                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+                <div class="col form-group">
+                    <label>Price</label>
+                    @Html.EditorFor(model => model.ProductPrice, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductPrice, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row.// -->
+            <div class="form-group">
+                <label>Category</label>
+                @Html.DropDownListFor(model => model.CategoryId, new SelectList(ViewBag.Category, "CategoryId", "CategoryName"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-row">
+                <div class="col form-group">
+                    <label>Short Description</label>
+                    @Html.EditorFor(model => model.ProductShortDesc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductShortDesc, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+                <div class="col form-group">
+                    <label>Long Description</label>
+                    @Html.EditorFor(model => model.ProductLongDesc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductLongDesc, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row.// -->
+
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    @Html.EditorFor(model => model.IsRentalAvailable, new { htmlAttributes = new { @class = "custom-control-input" } })
+                    @Html.ValidationMessageFor(model => model.IsRentalAvailable, "", new { @class = "text-danger" }) <div class="custom-control-label"> Rent Available? </div>
+                </label>
+            </div> <!-- form-group form-check .// -->
+            <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                    @Html.EditorFor(model => model.IsNew, new { htmlAttributes = new { @class = "custom-control-input" } })
+                    @Html.ValidationMessageFor(model => model.IsNew, "", new { @class = "text-danger" }) <div class="custom-control-label"> New Product? </div>
+                </label>
+            </div> <!-- form-group form-check .// -->
+
+            <div class="form-group">
+                <label for="exampleFormControlFile1">
+                    @Html.TextBoxFor(m => m.File, new { type = "file", @class = "form-control-file" })
+                    @Html.ValidationMessageFor(m => m.File)
+                </label>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <button class="btn btn-primary btn-block">Add</button>
+        }
+    </div> <!-- card-body.// -->
+</div> <!-- card .// -->

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BookifyNew.Models.Product>
+
+@{
+    ViewData["Title"] = "MyItems";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <article class="card card-product-list">
+        <div class="card-body">
+            <div class="row">
+                <aside class="col-sm-4">
+                    <a href="#" class="img-wrap"><img src="@item.ImagePath"></a>
+                </aside> <!-- col.// -->
+                <div class="col-sm-8">
+                    <a href="#" class="title mt-2 h5">@item.ProductName</a>
+                    <div class="d-flex mb-3">
+                        <div class="price-wrap mr-4">
+                            <span class="price h5">$@item.ProductPrice</span>
+                        </div> <!-- price-dewrap // -->
+                    </div>
+
+                    <ul class="list-bullet">
+                        <li>@("Item posted on "+item.PostDate.Date.ToString("dddd, dd MMMM yyyy"))</li>
+                        <li>@(item.IsNew == true ?"This is new Product":"This is old Product")  </li>
+                    </ul>
+
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            @Html.ActionLink("Buyer Details", "BuyerDetails", "Orders", new { id = item.ProductId }, new { @class = "btn btn-primary" })
+                           @* @Html.ActionLink("Edit", "Edit", "Products", new { id = item.ProductId }, new { @class = "btn btn-primary" })*@
+                            @Html.ActionLink("Delete", "Delete", "Products", new { id = item.ProductId }, new { @class = "btn btn-primary" })
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card-body .// -->
+    </article>
+}

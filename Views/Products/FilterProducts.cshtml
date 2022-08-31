@@ -1,0 +1,23 @@
+﻿
+
+@model IEnumerable<BookifyNew.Models.ProductViewModel>
+@{
+    ViewData["Title"] = "FilterProducts";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <figure class="card card-product-grid">
+                <div class="img-wrap"> <img src="@item.ImagePath"> </div>
+                <figcaption class="info-wrap border-top">
+                    @Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId }, new { @class = "title" })
+                    <small class="text-muted">@item.ProductShortDesc</small>
+                    <div class="price mt-2">$@item.ProductPrice</div> <!-- price-wrap.// -->
+                </figcaption>
+            </figure> <!-- card // -->
+        </div> <!-- col.// -->
+    }
+</div>

@@ -1,0 +1,85 @@
+﻿@model BookifyNew.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProductId" />
+                <div class="form-group">
+                    <label asp-for="ProductName" class="control-label"></label>
+                    <input asp-for="ProductName" class="form-control" />
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductShortDesc" class="control-label"></label>
+                    <input asp-for="ProductShortDesc" class="form-control" />
+                    <span asp-validation-for="ProductShortDesc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductLongDesc" class="control-label"></label>
+                    <input asp-for="ProductLongDesc" class="form-control" />
+                    <span asp-validation-for="ProductLongDesc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageName" class="control-label"></label>
+                    <input asp-for="ImageName" class="form-control" />
+                    <span asp-validation-for="ImageName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImagePath" class="control-label"></label>
+                    <input asp-for="ImagePath" class="form-control" />
+                    <span asp-validation-for="ImagePath" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductPrice" class="control-label"></label>
+                    <input asp-for="ProductPrice" class="form-control" />
+                    <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"></label>
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsRentalAvailable" /> @Html.DisplayNameFor(model => model.IsRentalAvailable)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsNew" /> @Html.DisplayNameFor(model => model.IsNew)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SellerId" class="control-label"></label>
+                    <input asp-for="SellerId" class="form-control" />
+                    <span asp-validation-for="SellerId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostDate" class="control-label"></label>
+                    <input asp-for="PostDate" class="form-control" />
+                    <span asp-validation-for="PostDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+<span class="text-danger">@Html.ValidationSummary()</span>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+

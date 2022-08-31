@@ -1,0 +1,95 @@
+﻿@model BookifyNew.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+<form asp-action="Buy" asp-controller="Cart">
+    <div class="card">
+        <div class="row no-gutters">
+            <aside class="col-sm-6 border-right">
+                <article class="gallery-wrap">
+                    <div class="img-big-wrap">
+                        <a href="#"><img src="@Model.ImagePath"></a>
+                    </div> <!-- img-big-wrap.// -->
+                </article> <!-- gallery-wrap .end// -->
+            </aside>
+            <main class="col-sm-6">
+                <article class="content-body">
+                    <h2 class="title">@Model.ProductName</h2>
+
+                    <p>
+                        @Model.ProductShortDesc
+                    </p>
+                    <p>
+                        @Model.ProductLongDesc
+                    </p>
+
+                    <div class="h3 mb-4">
+                        <var class="price h4">$@Model.ProductPrice</var>
+                    </div> <!-- price-wrap.// -->
+
+
+                    <div class="form-row">
+
+
+                        <div class="col-3">
+
+                            @Html.DropDownListFor(m => m.BuyoutOption, new SelectList(Enum.GetValues(typeof(SelectedBuyoutOption))), new { @class = "form-control" })
+
+
+                            @*@Html.DropDownListFor(m => m.BuyoutOption, new SelectList(Enum.GetValues(typeof(sele))))
+
+                                <select class="form-control" id="dropdownRent" asp-for="BuyoutOption" name="number">
+                                    <option value="Rent">Rent</option>
+                                    <option value="Buy">Buy</option>
+                                </select>*@
+                            <span asp-validation-for="BuyoutOption" class="text-danger"></span>
+                        </div> <!-- col.// -->
+                        <div class="col-5" id="Unhidden_div">
+                            <div class="col">
+                                <input type="date" class="form-control" placeholder="Start Date" asp-for="StartDate" id="drpStartDate" />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                            <div class="col-1">
+                                <input type="text" class="form-control" asp-for="ProductId"  hidden readonly/>
+                            </div>
+                            <div class="col">
+                                <input type="date" class="form-control" placeholder="End Date" asp-for="EndDate" id="drpEndDate" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <input type="submit" value="Add to cart" class="btn  btn-primary w-100" />
+
+                            @*@Html.ActionLink("Add to cart", "Buy", "Cart", new { CategoryId = Model.CategoryId, File = Model.File, ImageName = Model.ImageName, ImagePath = Model.ImagePath, IsNew = Model.IsNew, IsRentalAvailable = Model.IsRentalAvailable, ProductId = Model.ProductId, ProductLongDesc = Model.ProductLongDesc, stringProductShortDesc = Model.ProductShortDesc, ProductName = Model.ProductName, ProductPrice = Model.ProductPrice, ProductShortDesc = Model.ProductShortDesc, EndDate = Model.EndDate, StartDate = Model.StartDate, BuyoutOption = Model.BuyoutOption }, new { @class = "btn  btn-primary w-100" })*@
+                            @*<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span>*@
+                            @*<i class="fas fa-shopping-cart"></i>  </a>*@
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+
+
+                </article> <!-- product-info-aside .// -->
+            </main> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- card.// -->
+</form>
+    <script>
+
+        $(document).ready(function () {
+
+            $("#BuyoutOption").change(function () {
+                var value = document.getElementById("BuyoutOption").value;
+                if (value == "Rent") {
+                    $("#Unhidden_div").show();
+                }
+                else {
+                    $("#Unhidden_div").hide();
+                }
+            });
+        })
+
+    </script>
+
+

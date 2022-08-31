@@ -1,0 +1,74 @@
+﻿@model BookifyNew.ViewModel.ViewProfileViewModel
+
+@{
+    ViewData["Title"] = "ViewProfileAsync";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+<div class="card">
+    <article class="card-body">
+        <header class="mb-4">
+            <h4 class="card-title">Profile</h4>
+        </header>
+        <form class="block-register" method="post" asp-controller="Account" asp-action="ViewProfile">
+            <div class="form-group form-row">
+                <label class="col-md-3 col-form-label">Full name</label>
+                <div class="col">
+                    <input asp-for="FirstName" class="form-control" placeholder="First name" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <input asp-for="LastName" class="form-control" placeholder="Last name" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="form-group form-row">
+                <label class="col-md-3 col-form-label">Phone</label>
+                <div class="col-9">
+                    <div class="input-group">
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-row">
+                <label class="col-md-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input asp-for="Email" class="form-control" placeholder="Ex. john@gmail.com" readonly />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group form-row">
+                <label class="col-md-3 col-form-label">Address</label>
+                <div class="col">
+                    <input asp-for="Address" class="form-control" placeholder="Street, Building" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group form-row">
+                <label class="col-md-3 col-form-label">Full name</label>
+                <div class="col">
+                    <input asp-for="City" class="form-control" placeholder="City" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <input asp-for="PostalCode" class="form-control" placeholder="Postal Code" />
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row mb-2">
+                <div class="col-sm-9 offset-sm-3">
+                    <button type="submit" class="btn btn-block btn-primary">Edit</button>
+                </div>
+            </div>
+
+        </form>
+    </article> <!-- card-body end .// -->
+    
+</div> <!-- card.// -->
+<span class="text-danger">@Html.ValidationSummary()</span>

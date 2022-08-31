@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BookifyNew.Models.ProductViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+
+<div class="row">
+
+    @foreach (var item in Model.Where(x => x.ProductIndexDisplay == 1).Take(4))
+    {
+        <div class="col-md-3">
+            <figure class="card card-product-grid">
+                <div class="img-wrap"> <img src="@item.ImagePath"> </div>
+                <figcaption class="info-wrap border-top">
+                    @Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId}, new { @class = "title" })
+                    <small class="text-muted">@item.ProductShortDesc</small>
+                    <div class="price mt-2">$@item.ProductPrice</div> <!-- price-wrap.// -->
+                </figcaption>
+            </figure> <!-- card // -->
+        </div> <!-- col.// -->
+
+    }
+</div>
+
+<div class="row">
+
+    @foreach (var item in Model.Where(x => x.ProductIndexDisplay == 2).Take(4))
+    {
+        <div class="col-md-3">
+            <figure class="card card-product-grid">
+                <div class="img-wrap"> <img src="@item.ImagePath"> </div>
+                <figcaption class="info-wrap border-top">
+                    @Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId }, new { @class = "title" })
+                    <small class="text-muted">@item.ProductShortDesc</small>
+                    <div class="price mt-2">$@item.ProductPrice</div> <!-- price-wrap.// -->
+                </figcaption>
+            </figure> <!-- card // -->
+        </div> <!-- col.// -->
+    }
+
+</div>
+
+
+<div class="row">
+
+    @foreach (var item in Model.Where(x => x.ProductIndexDisplay == 3).Take(3))
+    {
+        <div class="col-md-4">
+            <figure class="card card-product-grid card-lg">
+                <div class="img-wrap"><img src="@item.ImagePath"></div>
+                <figcaption class="info-wrap">
+                    @Html.ActionLink(item.ProductName, "Details", "Products", new { id = item.ProductId }, new { @class = "title" })
+                    <p class="text-muted">@item.ProductShortDesc</p>
+                </figcaption>
+                <div class="bottom-wrap">
+                    <div class="price-wrap">
+                        <span class="price">$@item.ProductPrice</span>
+                    </div> <!-- price-wrap.// -->
+                </div> <!-- bottom-wrap.// -->
+            </figure>
+        </div>
+    }
+</div>

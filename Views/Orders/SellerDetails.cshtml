@@ -1,0 +1,28 @@
+﻿
+@model BookifyNew.ViewModel.UserDetails
+@{
+    ViewData["Title"] = "SellerDetails";
+    Layout = "~/Views/Shared/_Product.cshtml";
+}
+
+<article class="card card-product-list">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <a href="#" class="title mt-2 h5">@(Model.FirstName + " " + Model.LastName)</a>
+                <div class="d-flex mb-3">
+                    <div class="price-wrap mr-4">
+                        <span class="price h6">@("Street: "+ Model.Address)</span>
+                        <br />
+                        <span class="price h6">@("City: "+ Model.City)</span>
+                        <br />
+                        <span class="price h6">@("Postal Code: "+ Model.PostalCode)</span>
+                        <br />
+                        <span class="price h6">@("Phone Number: "+ Model.PhoneNumber)</span>
+                    </div> <!-- price-dewrap // -->
+                </div>
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- card-body .// -->
+</article>
+
