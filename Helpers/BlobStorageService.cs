@@ -14,7 +14,7 @@ namespace BookifyNew.Helpers
 
         public BlobStorageService()
         {
-            this.accessKey = "DefaultEndpointsProtocol=https;AccountName=bookifyproductimage;AccountKey=ip4Kch8spIDD0FvdW3dfkMOOjCNkVHqGOWOsMbJuYDRa/M5X861aqceJolO0iufLoBURfEV7GAMU0r4qFGL0BA==;EndpointSuffix=core.windows.net";
+            this.accessKey = "DefaultEndpointsProtocol=https;AccountName=bookifyproductimage;AccountKey=<key_goes_here>;EndpointSuffix=core.windows.net";
         }
 
         public string UploadFileToBlob(string strFileName, byte[] fileData, string fileMimeType)
